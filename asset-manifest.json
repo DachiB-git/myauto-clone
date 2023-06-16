@@ -1,16 +1,21 @@
 {
   "files": {
-    "main.css": "/Final/static/css/main.6f320763.css",
-    "main.js": "/Final/static/js/main.15cfc892.js",
+    "main.css": "/Final/static/css/main.476eca1f.css",
+    "main.js": "/Final/static/js/main.682455c1.js",
     "static/media/logo.svg": "/Final/static/media/logo.56d735b7b31d46aaf9793a9597380c3a.svg",
+    "static/media/engine.svg": "/Final/static/media/engine.7c584db8f44f44f5c213b5bb00df2a0f.svg",
+    "static/media/green_check.svg": "/Final/static/media/green_check.17b0b89517586a484ccfc6f941390065.svg",
+    "static/media/gearbox.svg": "/Final/static/media/gearbox.cbd3b982f6ce9503099d9afeb0c54f64.svg",
+    "static/media/wheel.svg": "/Final/static/media/wheel.d58e10a4387935c00ccd0d4d15c7116b.svg",
+    "static/media/dist.svg": "/Final/static/media/dist.85d4a7891d226e116bccbdb99def3ea8.svg",
     "index.html": "/Final/index.html",
     "static/media/cross.svg": "/Final/static/media/cross.ab1609046e426ce9120cef10f258e5ee.svg",
     "static/media/arrow.svg": "/Final/static/media/arrow.194be7a75c3c12669e6ff09be022d487.svg",
-    "main.6f320763.css.map": "/Final/static/css/main.6f320763.css.map",
-    "main.15cfc892.js.map": "/Final/static/js/main.15cfc892.js.map"
+    "main.476eca1f.css.map": "/Final/static/css/main.476eca1f.css.map",
+    "main.682455c1.js.map": "/Final/static/js/main.682455c1.js.map"
   },
   "entrypoints": [
-    "static/css/main.6f320763.css",
-    "static/js/main.15cfc892.js"
+    "static/css/main.476eca1f.css",
+    "static/js/main.682455c1.js"
   ]
 }
