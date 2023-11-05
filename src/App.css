@@ -481,6 +481,7 @@ header {
     display: flex;
     justify-content: center;
     gap: 1.5em;
+    min-height: 100vh;
   }
   header img,
   main {
@@ -524,11 +525,12 @@ header {
   }
   .search-form {
     display: block;
+    position: sticky;
+    top: calc(90px + 2em);
     min-width: 280px;
     max-width: 280px;
     height: min-content;
     opacity: 100;
-    position: relative;
     grid-area: search;
     visibility: visible;
     margin-top: 0;
