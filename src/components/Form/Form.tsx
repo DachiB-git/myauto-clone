@@ -1,4 +1,4 @@
-import { ChangeEvent, useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import selectArrow from "../../svgs/arrow.svg";
 
 const Form = ({
