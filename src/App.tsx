@@ -1,29 +1,27 @@
 import { useEffect, useState } from "react";
-import Product from "./Components/Product";
+import Product from "./components/Product/Product";
 import selectArrow from "./svgs/arrow.svg";
 import crossIcon from "./svgs/cross.svg";
 import logo from "./svgs/logo.svg";
+import Form from "./components/Form/Form";
 import "./App.css";
-import Form from "./Components/Form";
 
 function App() {
   const url = "https://api2.myauto.ge/ka/products";
-  type pageParam = {
-    current: number;
-    last: number | null;
-  };
+
   const [data, setData] = useState<any>([]);
   const [period, setPeriod] = useState();
-  const [sortOrder, setSortOrder] = useState("0");
-  const [query, setQuery] = useState("");
+  const [sortOrder, setSortOrder] = useState<string>("0");
+  const [query, setQuery] = useState<string>("");
   const [manData, setManData] = useState([]);
   const [catData, setCatData] = useState([]);
-  const [filters, setFilters] = useState([]);
+  const [filters, setFilters] = useState<string[]>([]);
   const [currency, setCurrency] = useState<string>("GEL");
-  const [pageData, setPageData] = useState<pageParam>({
+  const [pageData, setPageData] = useState<Global.pageParam>({
     current: 1,
     last: null,
   });
+  console.log(query);
   useEffect(() => {
     fetch("https://static.my.ge/myauto/js/mans.json")
       .then((res) => res.json())
@@ -57,6 +55,7 @@ function App() {
         ?.classList.remove("active-loading-screen");
     }, 3000);
   }, []);
+
   function containerReset() {
     Array.from(document.querySelectorAll(".checkbox-container")).map(
       (item: any) => {
@@ -104,6 +103,7 @@ function App() {
         e.target.textContent;
     }
   }
+
   function removeFilter(e: any) {
     setFilters((prevFilters: any) =>
       prevFilters.filter(
@@ -156,16 +156,18 @@ function App() {
         .join("&")
     );
   }
+
   function updatePage(e: any) {
     const newPage: number = Number(e.target.value);
-    setPageData((prevPageData: pageParam) => ({
+    setPageData((prevPageData: Global.pageParam) => ({
       current: newPage,
       last: prevPageData.last,
     }));
     window.scrollTo(0, 0);
   }
+
   function jump(dir: number) {
-    setPageData((prevPageData: pageParam) => ({
+    setPageData((prevPageData: Global.pageParam) => ({
       current: dir ? Number(prevPageData.last) : 1,
       last: prevPageData.last,
     }));
@@ -295,6 +297,7 @@ function App() {
       </>
     );
   }
+
   return (
     <div
       className="App"
@@ -326,7 +329,6 @@ function App() {
           catData={catData}
           manData={manData}
           containerReset={containerReset}
-          query={query}
           setCurrency={setCurrency}
           setFilters={setFilters}
           currency={currency}

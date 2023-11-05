@@ -1,7 +1,7 @@
-import { useEffect, useState } from "react";
-import selectArrow from "../svgs/arrow.svg";
+import { ChangeEvent, useEffect, useState } from "react";
+import selectArrow from "../../svgs/arrow.svg";
 
-function Form({
+const Form = ({
   setQuery,
   catData,
   manData,
@@ -10,16 +10,8 @@ function Form({
   setCurrency,
   currency,
   setPageData,
-}: any) {
-  type form = {
-    VehicleType: number;
-    ForRent: string;
-    Mans: string[];
-    Cats: string[];
-    PriceFrom: string;
-    PriceTo: string;
-  };
-  const [formData, setFormData] = useState<form>({
+}: Form.IProps) => {
+  const [formData, setFormData] = useState<Form.Data>({
     VehicleType: 0,
     ForRent: "",
     Mans: [],
@@ -45,9 +37,9 @@ function Form({
       }
     })
     .sort((a: any, b: any) => a.man_name.localeCompare(b.man_name));
-  function handleSubmit(e: any) {
+  function handleSubmit(e: React.FormEvent) {
     e.preventDefault();
-    e.target.classList.toggle("active-form");
+    (e.target as Element).classList.toggle("active-form");
     const params: any = Object.entries(formData);
     function handleParam(param: string, i: number) {
       switch (param) {
@@ -105,6 +97,7 @@ function Form({
     });
     setPageData({ current: 1, last: null });
   }
+
   function handleFormChange(e: any) {
     switch (e.currentTarget.id) {
       case "deal":
@@ -115,7 +108,7 @@ function Form({
         }));
         break;
       case "manufacturer":
-        setFormData((prevFormData: any) => ({
+        setFormData((prevFormData: Form.Data) => ({
           ...prevFormData,
           Mans: prevFormData.Mans?.find(
             (item: any) => item[0] === e.target.value
@@ -127,7 +120,7 @@ function Form({
         }));
         break;
       case "category":
-        setFormData((prevFormData: any) => ({
+        setFormData((prevFormData: Form.Data) => ({
           ...prevFormData,
           Cats: prevFormData.Cats?.includes(e.target.value)
             ? prevFormData.Cats.filter(
@@ -137,13 +130,13 @@ function Form({
         }));
         break;
       case "price":
-        setFormData((prevFormData: any) => ({
+        setFormData((prevFormData: Form.Data) => ({
           ...prevFormData,
           [`${e.target.id}`]: e.target.value,
         }));
         break;
       case "vehicle-type":
-        setFormData((prevFormData: any) => ({
+        setFormData((prevFormData: Form.Data) => ({
           ...prevFormData,
           VehicleType: Number(e.target.value),
         }));
@@ -152,7 +145,8 @@ function Form({
         setFormData((prevFormData: any) => ({
           ...prevFormData,
           Mans: prevFormData.Mans.map((man: any) => {
-            if (man[0] === e.target.parentNode.parentNode.dataset.man_id) {
+            const target = e.target as any;
+            if (man[0] === target.parentNode.parentNode.dataset.man_id) {
               if (man[1].includes(e.target.value)) {
                 return [
                   man[0],
@@ -499,6 +493,6 @@ function Form({
       <input type="submit" value="ძებნა" className="search-btn" />
     </form>
   );
-}
+};
 
 export default Form;
